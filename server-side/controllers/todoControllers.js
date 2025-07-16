@@ -11,6 +11,9 @@ exports.getTodos = async (req, res) => {
 
 exports.createTodo = async (req, res) => {
   const { title } = req.body;
+
+  console.log("Request body:", req.body); // 🟡 Add this line
+
   try {
     const result = await pool.query(
       'INSERT INTO todos (title, completed) VALUES ($1, $2) RETURNING *',
@@ -18,9 +21,11 @@ exports.createTodo = async (req, res) => {
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
+    console.error("Error in createTodo:", err); // 🔴 Add this line
     res.status(500).json({ error: 'Error creating todo' });
   }
 };
+
 
 exports.updateTodo = async (req, res) => {
   const { id } = req.params;
