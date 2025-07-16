@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // const API = "http://localhost:5000/api/todos"; // manual on localmachine
-const API = `${import.meta.env.VITE_API_URL}/api/todos`;
+const API = "https://todo-apitodo-npm-install.onrender.com";
 
 
 export default function App() {
